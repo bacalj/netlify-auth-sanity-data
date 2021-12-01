@@ -3,3 +3,4 @@
 .netlify
 dist
 .env
+node_modules
