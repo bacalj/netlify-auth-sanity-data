@@ -2,10 +2,24 @@
 <html lang="en">
 <head>
   <title>Authy Front End App</title>
+  <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="workings.js"></script>
 </head>
 <body>
-  hello world
+  <div class="app">
+    <h1>Authenticate with Netlify + Read/Write to Sanity</h1>
 
-  <button>Login</button>
+    <div class="login-box">
+      <div data-netlify-identity-menu></div>
+    </div>
+    <button onclick="writeMessage('foo')">Foo</button>
+  </div>
+
+  <div class="info">
+    <ol id="messages"></ol>
+  </div>
+
+  
 </body>
 </html>

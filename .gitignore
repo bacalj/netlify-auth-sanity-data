@@ -4,3 +4,7 @@
 dist
 .env
 node_modules
+netlify/functions/auth-fetch-example
+netlify/functions/protected-function-example
+netlify/functions/sanity-create-example
+netlify/functions/sanity-groq-example
