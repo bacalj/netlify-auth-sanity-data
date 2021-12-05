@@ -10,12 +10,14 @@
   <div class="app">
     <h1>Authenticate with Netlify + Read/Write to Sanity</h1>
 
+    <small><em>Everything in here is rendered by JS loaded from Netlify.</em></small>
     <div class="login-box">
-      <small><em>Everything in here is rendered by JS loaded from Netlify.</em></small>
+      
       <div data-netlify-identity-menu></div>
     </div>
 
-    <button onclick="writeMessage('foo')">Foo</button>
+    <button onclick="renderToDos()">Get My ToDos</button>
+    <ul id="todos"></ul>
   </div>
 
   <div class="info">
