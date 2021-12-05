@@ -12,3 +12,11 @@ function writeMessage(msg){
     document.getElementById("messages").appendChild(newItem);
 }
 
+
+function getUsersToDos(){
+    console.log(JSON.parse(localStorage['gotrue.user']))
+}
+
+function writeNewToDo(){
+
+}

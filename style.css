@@ -10,3 +10,11 @@ body {
     font-family: 'Courier New', Courier, monospace;
     background-color: lightsteelblue;
 }
+
+.login-box {
+    background-color: rgb(231, 245, 245);
+    width: 300px;
+    padding:10px;
+    border:1px solid black;
+    margin-bottom:20px;
+}       
