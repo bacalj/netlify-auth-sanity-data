@@ -16,12 +16,12 @@ function seeUser(){
     console.log(JSON.parse(localStorage['gotrue.user']))
 }
 
-function renderToDos(){
-    let todos = ["eat", "sleep"]
-    for (let i = 0; i < todos.length; i++) {
+function renderNotes(){
+    let notes = ["eat", "sleep"]
+    for (let i = 0; i < notes.length; i++) {
         let newItem = document.createElement('li');
-        let newText = document.createTextNode(todos[i]);
+        let newText = document.createTextNode(notes[i]);
         newItem.appendChild(newText);
-        document.getElementById("todos").appendChild(newItem);  
+        document.getElementById("notes").appendChild(newItem);  
     }
 }
