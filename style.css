@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&display=swap');
+
 body {
     background-color: rgb(248, 245, 238);
     color:rgb(15, 3, 3)
@@ -15,16 +17,43 @@ body {
 }
 
 .login-box {
-    background-color: rgb(231, 245, 245);
-    width: 340px;
+    width: 440px;
     padding:5px;
     margin:0 auto;
-    border:2px solid silver;
-    border-radius:6px;
-    margin-bottom:20px;
+    position: relative;
 }       
 
 .login-box ul {
     list-style: none;
     padding-left:0px;
+}
+
+.post-it {
+    background-color: lightgoldenrodyellow;
+    font-family: "Fuzzy Bubbles", 'Courier New', Courier, monospace;
+    width:140px;
+    height:100px;
+    box-shadow: 3px 3px 2px 1px rgba(100, 100, 100, .2);
+    padding:10px;
+    position: absolute;
+    text-align: left;
+} 
+
+.post-it.one {
+    transform: rotate(-5deg);
+    right:-30px;
+    bottom:-80px;
+}
+
+.data-netlify {
+    background-color: rgb(100, 163, 186);
+    padding:10px;
+    border-radius:6px;
+    margin-bottom:20px;
+    width:220px;
+    margin: 0 auto;
+}
+
+.data-netlify a {
+    color:white;
 }
