@@ -13,8 +13,9 @@ function writeMessage(msg){
 
 
 function seeUser(){
-    let userData = localStorage.getItem('gotrue.user')
-    document.querySelector('#userinfo').innerHTML = `<pre>${userData}</pre>`
+    let userData = JSON.parse(localStorage.getItem('gotrue.user'))
+    console.log(userData)
+    // document.querySelector('#userinfo').innerHTML = `<pre>${userData}</pre>`
 }
 
 function renderNotes(){
