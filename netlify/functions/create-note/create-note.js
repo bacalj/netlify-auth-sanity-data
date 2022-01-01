@@ -12,10 +12,10 @@ const client = sanityClient({
 const handler = async (event, context) => {
 
   //console.log("event: ", event)
-  console.log("HEY context.clientContext.identity: ", context.clientContext.identity)
+  console.log("CONTEXT: ", context.clientContext.identity)
 
   const claims = context.clientContext && context.clientContext.identity
-  console.log(context.clientContext.identity)
+  //console.log(context.clientContext.identity)
 
   if (!claims) {
     console.log('No claims!')
@@ -27,18 +27,19 @@ const handler = async (event, context) => {
     }
   }
 
-  const newNote = {
-    _type: 'note',
-    webUser: payload.webUser,
-    note: payload.note,
-  }
+  // const newNote = {
+  //   _type: 'note',
+  //   webUser: payload.webUser,
+  //   note: payload.note,
+  // }
 
   try {
     const result = await client.create(newDoc)
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(result),
+      //body: JSON.stringify(result),
+      body: 'hello'
     }
   } 
   
