@@ -12,7 +12,7 @@ const client = sanityClient({
 const handler = async (event, context) => {
 
   //console.log("event: ", event)
-  console.log("CONTEXT: ", context.clientContext.identity)
+  console.log("CONTEXT: ", context)
 
   const claims = context.clientContext && context.clientContext.identity
   //console.log(context.clientContext.identity)
