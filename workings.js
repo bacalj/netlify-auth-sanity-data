@@ -13,7 +13,8 @@ function writeMessage(msg){
 
 
 function seeUser(){
-    console.log(JSON.parse(localStorage['gotrue.user']))
+    let userData = JSON.parse(localStorage.getItem('gotrue.user'))
+    document.querySelector('#userinfo').innerHTML = `<pre>${userData}</pre>`
 }
 
 function renderNotes(){
