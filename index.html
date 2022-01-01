@@ -8,14 +8,14 @@
 </head>
 <body>
   <div class="app">
-    <h1>Authenticate with Netlify<br>Read/Write to Sanity</h1>
+    <h1>Authenticate with Netlify + Read/Write to Sanity</h1>
 
     <div class="login-box">
       <!-- <div class="post-it one">All the stuff in this box is rendered by Netlify</div> -->
       <div class="data-netlify" data-netlify-identity-menu></div>
 
       <div class="see-user">
-        <button onclick="seeUser()">See user</button>
+        <button onclick="seeUser()"><code>console.log(JSON.parse(localStorage.getItem('gotrue.user')))</code></button>
         <div id="userinfo"></div>
       </div>
     </div>
