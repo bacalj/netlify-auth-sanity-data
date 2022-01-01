@@ -27,3 +27,9 @@ function renderNotes(){
         document.getElementById("notes").appendChild(newItem);  
     }
 }
+
+async function createUserNote(){
+    fetch('/.netlify/functions/create-note').then((r) => {
+        console.log(r)
+    })
+}

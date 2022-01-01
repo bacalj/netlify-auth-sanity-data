@@ -9,7 +9,20 @@ const client = sanityClient({
   useCdn: false,
 })
 
-const handler = async (payload) => {
+const handler = async (event, context) => {
+
+  const claims = context.clientContext && context.clientContext.user
+  console.log(context.clientContext.user)
+
+  if (!claims) {
+    console.log('No claims!')
+    return {
+      statusCode: 401,
+      body: JSON.stringify({
+        data: 'soree',
+      }),
+    }
+  }
 
   const newNote = {
     _type: 'note',

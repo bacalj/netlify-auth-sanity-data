@@ -8,21 +8,22 @@
 </head>
 <body>
   <div class="app">
-    <h1>Authenticate with Netlify + Read/Write to Sanity</h1>
-
-    <div class="login-box">
+    
+    <h2>Authenticate with Netlify</h2>
+    <div class="netlify box">
       <!-- <div class="post-it one">All the stuff in this box is rendered by Netlify</div> -->
       <div class="data-netlify" data-netlify-identity-menu></div>
 
-      <div class="see-user">
+      <!-- <div class="see-user">
         <button onclick="seeUser()"><code>console.log(JSON.parse(localStorage.getItem('gotrue.user')))</code></button>
-        <div id="userinfo"></div>
-      </div>
+       <div id="userinfo"></div>
+      </div> -->
     </div>
 
-    <ul id="notes">
-
-    </ul>
+    <h2>Read & Write this Users Data in Sanity</h2>
+    <div class="sanity box">
+      <button onclick="createUserNote()"></button>
+    </div>
   </div>
 
   <div class="info">
