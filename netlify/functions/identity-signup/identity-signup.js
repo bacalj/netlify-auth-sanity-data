@@ -16,6 +16,8 @@ const handler = async function (event) {
 
   console.log("USER CREATED: ", user)
   console.log("RESPONSEBODY: ", responseBody)
+
+  /* create the user in sanity with the new users id as the sanity document id */
   
   return {
     statusCode: 200,

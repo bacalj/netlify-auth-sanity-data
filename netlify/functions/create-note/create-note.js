@@ -13,6 +13,8 @@ const handler = async (event, context) => {
 
   const { identity, user } = context.clientContext
 
+  console.log("IDENTITY: ", identity)
+  console.log("USER: ", user)
   if (!user) {
     console.log('No user!')
     return {
@@ -23,14 +25,14 @@ const handler = async (event, context) => {
     }
   }
 
-  const newNote = {
-    _type: 'note',
-    webUser: user.sub, //netlify's unique id is called sub dunno why
-    note: event.queryStringParameters.note
-  }
+  // const newNote = {
+  //   _type: 'note',
+  //   webUser: user.sub, //netlify's unique id is called sub dunno why
+  //   note: event.queryStringParameters.note
+  // }
 
   try {
-    const result = await client.create(newNote)
+    //const result = await client.create(newNote)
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
