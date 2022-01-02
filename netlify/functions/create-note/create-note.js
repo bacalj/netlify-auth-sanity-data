@@ -13,7 +13,6 @@ const handler = async (event, context) => {
 
   const { identity, user } = context.clientContext
   console.log("EVENT.queryStringParameters: ", event.queryStringParameters)
-  console.log("EVENT.multivalueHeaders.Authorization: ", event.multivalueHeaders.Authorization)
   console.log("IDENTITY: ", identity)
   console.log("USER: ", user)
 

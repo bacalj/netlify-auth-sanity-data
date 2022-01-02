@@ -30,21 +30,29 @@ function renderNotes(){
 
 async function createUserNote(){
 
-    if (JSON.parse(localStorage.getItem('gotrue.user')) !== null){
-        const localUser = JSON.parse(localStorage.getItem('gotrue.user'))
-        const token = localUser.token.access_token
+    // if (JSON.parse(localStorage.getItem('gotrue.user')) !== null){
+    //     const localUser = JSON.parse(localStorage.getItem('gotrue.user'))
+    //     const token = localUser.token.access_token
 
-        fetch('/.netlify/functions/create-note?foo=bar', {
-            headers: {
-                Authorization: `bearer ${token}`
-            }
-        }).then((r) => {
-            console.log(r)
-        })
-    } 
+    //     fetch('/.netlify/functions/create-note?foo=bar', {
+    //         headers: {
+    //             Authorization: `bearer ${token}`
+    //         }
+    //     }).then((r) => {
+    //         console.log(r)
+    //     })
+    // } 
     
-    else {
-        console.log('no user')
-    }
+    // else {
+    //     console.log('no user')
+    // }
+
+    fetch('/.netlify/functions/create-note?foo=bar', {
+                headers: {
+                    Authorization: `bearer notoken`
+                }
+            }).then((r) => {
+                console.log(r)
+            })
 
 }
