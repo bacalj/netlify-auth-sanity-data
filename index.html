@@ -6,18 +6,15 @@
   <link rel="stylesheet" href="style.css">
   <script src="workings.js"></script>
 </head>
-<body>
+<body class="logged-out">
   <div class="app">
     
     <h2>Authenticate with Netlify</h2>
     <div class="netlify box">
       <!-- <div class="post-it one">All the stuff in this box is rendered by Netlify</div> -->
       <div class="data-netlify" data-netlify-identity-menu></div>
+      <button class="see-user" onclick="seeUser()">See local user data in console</button>
 
-      <!-- <div class="see-user">
-        <button onclick="seeUser()"><code>console.log(JSON.parse(localStorage.getItem('gotrue.user')))</code></button>
-       <div id="userinfo"></div>
-      </div> -->
     </div>
 
     <h2>Read & Write this Users Data in Sanity</h2>

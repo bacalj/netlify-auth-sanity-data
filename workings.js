@@ -15,7 +15,6 @@ function writeMessage(msg){
 function seeUser(){
     let userData = JSON.parse(localStorage.getItem('gotrue.user'))
     console.log(userData)
-    // document.querySelector('#userinfo').innerHTML = `<pre>${userData}</pre>`
 }
 
 function renderNotes(){
@@ -48,3 +47,21 @@ async function createUserNote(){
     }
 
 }
+
+/* a body class  based on logged in state */
+
+function setClasses(){
+    if (JSON.parse(localStorage.getItem('gotrue.user')) !== null){
+        document.body.classList.replace('logged-out', 'logged-in')
+    } else {
+        document.body.classList.replace('logged-in', 'logged-out')
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    setClasses()
+});
+
+window.addEventListener('storage', () => {
+    setClasses()
+})
