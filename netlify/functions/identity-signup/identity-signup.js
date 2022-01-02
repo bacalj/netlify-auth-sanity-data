@@ -12,6 +12,8 @@ const handler = async function (event) {
   const data = JSON.parse(event.body)
   const { user } = data
 
+  console.log(user)
+
   const responseBody = {
     app_metadata: {
       roles: ['basic-user']
@@ -28,6 +30,9 @@ const handler = async function (event) {
     email: user.email,
     fullName: user.user_metadata.full_name,
   }
+
+  console.log("can the client: ", client)
+  console.log("create the user in sanity: ", doc)
   
   client.createIfNotExists(doc).then((res) => {
     console.log(res)
