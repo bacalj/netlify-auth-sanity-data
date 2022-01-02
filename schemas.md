@@ -17,6 +17,11 @@ export default {
       type: 'string'
     },
     {
+      name: 'fullName',
+      title: 'Full Name',
+      type: 'string'
+    },
+    {
       name: 'Notes',
       title: 'notes',
       type: 'array',
