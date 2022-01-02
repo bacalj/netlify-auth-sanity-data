@@ -15,6 +15,7 @@ const handler = async (event, context) => {
 
   console.log("IDENTITY: ", identity)
   console.log("USER: ", user)
+
   if (!user) {
     console.log('No user!')
     return {
@@ -24,6 +25,10 @@ const handler = async (event, context) => {
       }),
     }
   }
+
+  /* note - see below - user.sub seems like a Google thing, lets see output of this with netlify user */
+
+  /* ACTUALLY it is called sub in this context, but id in the localStorage anyway...
 
   // const newNote = {
   //   _type: 'note',
