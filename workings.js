@@ -29,14 +29,23 @@ function renderNotes(){
 }
 
 async function createUserNote(){
-    const localUser = JSON.parse(localStorage.getItem('gotrue.user'))
-    const token = localUser.token
 
-    fetch('/.netlify/functions/create-note', {
-        headers: {
-            Authorization: `token ${token}`
-        }
-    }).then((r) => {
-        console.log(r)
-    })
+    if (JSON.parse(localStorage.getItem('gotrue.user')) !== null){
+        const localUser = JSON.parse(localStorage.getItem('gotrue.user'))
+        const token = localUser.token
+        console.log(token)
+
+        fetch('/.netlify/functions/create-note', {
+            headers: {
+                Authorization: `token ${token}`
+            }
+        }).then((r) => {
+            console.log(r)
+        })
+    } 
+    
+    else {
+        console.log('no user')
+    }
+
 }
