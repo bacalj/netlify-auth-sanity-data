@@ -29,7 +29,14 @@ function renderNotes(){
 }
 
 async function createUserNote(){
-    fetch('/.netlify/functions/create-note').then((r) => {
+    const localUser = JSON.parse(localStorage.getItem('gotrue.user'))
+    const token = localUser.token
+
+    fetch('/.netlify/functions/create-note', {
+        headers: {
+            Authorization: `token ${token}`
+        }
+    }).then((r) => {
         console.log(r)
     })
 }
