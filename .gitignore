@@ -4,6 +4,7 @@
 dist
 .env
 node_modules
+notes.md
 netlify/functions/auth-fetch-example
 netlify/functions/protected-function-example
 netlify/functions/sanity-create-example
