@@ -43,25 +43,10 @@ async function createUserNote(){
     } 
     
     else {
-        console.log('no user')
+        console.log('fetching with no user to see what happens')
+        fetch('/.netlify/functions/create-note?foo=bar').then((r) => {
+            console.log(r)
+        })
     }
 
 }
-
-/* a body class  based on logged in state */
-
-function setClasses(){
-    if (JSON.parse(localStorage.getItem('gotrue.user')) !== null){
-        document.body.classList.replace('logged-out', 'logged-in')
-    } else {
-        document.body.classList.replace('logged-in', 'logged-out')
-    }
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-    setClasses()
-});
-
-window.addEventListener('storage', () => {
-    setClasses()
-})

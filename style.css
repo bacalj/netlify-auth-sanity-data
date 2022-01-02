@@ -30,19 +30,7 @@ body {
 
 .see-user {
     margin-top:20px;
-    padding:10px;
-    border: 1px solid silver;
-    border-radius: 7px;
-}
-
-.logged-in .see-user {
-    background-color:lightgreen;
-    color:black;
-}
-
-.logged-out .see-user {
-    background-color:lightgrey;
-    color: darkgray;
+    width:220px;
 }
 
 li {
