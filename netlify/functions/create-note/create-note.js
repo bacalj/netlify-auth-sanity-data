@@ -16,10 +16,9 @@ const handler = async (event, context) => {
   console.log("IDENTITY: ", identity)
   console.log("USER: ", user)
 
-  const claims = context.clientContext && context.clientContext.identity
-  //console.log(context.clientContext.identity)
 
-  if (!claims) {
+  // check for user because that depends reliably on legit of token and logged in state? (lets check now)
+  if (!user) {
     console.log('No claims!')
     return {
       statusCode: 401,
