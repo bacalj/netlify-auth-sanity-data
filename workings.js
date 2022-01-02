@@ -32,7 +32,7 @@ async function createUserNote(){
 
     if (JSON.parse(localStorage.getItem('gotrue.user')) !== null){
         const localUser = JSON.parse(localStorage.getItem('gotrue.user'))
-        const token = localUser.token
+        const token = localUser.token.access_token
         console.log("localUser.token: ", token)
 
         fetch('/.netlify/functions/create-note', {
