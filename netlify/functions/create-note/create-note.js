@@ -12,14 +12,9 @@ const client = sanityClient({
 const handler = async (event, context) => {
 
   const { identity, user } = context.clientContext
-  console.log("EVENT.queryStringParameters: ", event.queryStringParameters)
-  console.log("IDENTITY: ", identity)
-  console.log("USER: ", user)
 
-
-  // check for user because that depends reliably on legit of token and logged in state? (lets check now)
   if (!user) {
-    console.log('No claims!')
+    console.log('No user!')
     return {
       statusCode: 401,
       body: JSON.stringify({
@@ -28,14 +23,14 @@ const handler = async (event, context) => {
     }
   }
 
-  // const newNote = {
-  //   _type: 'note',
-  //   webUser: payload.webUser,
-  //   note: payload.note,
-  // }
+  const newNote = {
+    _type: 'note',
+    webUser: user.sub, //netlify's unique id is called sub dunno why
+    note: event.queryStringParameters.note
+  }
 
   try {
-    const result = await client.create(newDoc)
+    const result = await client.create(newNote)
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },

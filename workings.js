@@ -41,12 +41,5 @@ async function createUserNote(){
             console.log(r)
         })
     } 
-    
-    else {
-        console.log('fetching with no user to see what happens')
-        fetch('/.netlify/functions/create-note?foo=bar').then((r) => {
-            console.log(r)
-        })
-    }
 
 }
