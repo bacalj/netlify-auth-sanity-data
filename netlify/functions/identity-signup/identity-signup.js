@@ -1,3 +1,5 @@
+const process = require('process')
+
 const sanityClient = require('@sanity/client')
 
 const client = sanityClient({
@@ -11,8 +13,6 @@ const client = sanityClient({
 const handler = async function (event) {
   const data = JSON.parse(event.body)
   const { user } = data
-
-  console.log(user)
 
   const responseBody = {
     app_metadata: {
@@ -31,18 +31,35 @@ const handler = async function (event) {
     fullName: user.user_metadata.full_name,
   }
 
-  console.log("can the client: ", client)
   console.log("create the user in sanity: ", doc)
-  
-  client.createIfNotExists(doc).then((res) => {
-    console.log(res)
-    console.log(`user with email ${user.email} was created (or was already present)`)
-  })
-  
-  return {
-    statusCode: 200,
-    body: JSON.stringify(responseBody),
+
+  try {
+    const result = await client.createIfNotExists(doc).then((res) => {
+      console.log('SANITY RES?: ', res)
+    })
+    return {
+      statusCode: 200,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(result),
+    }
+  } catch (error) {
+    return {
+      headers: { 'Content-Type': 'application/json' },
+      statusCode: 500,
+      body: error.responseBody || JSON.stringify({ error: 'An error occurred' }),
+    }
   }
+  
+  
+  // client.createIfNotExists(doc).then((res) => {
+  //   console.log(res)
+  //   console.log(`user with email ${user.email} was created (or was already present)`)
+  // })
+  
+  // return {
+  //   statusCode: 200,
+  //   body: JSON.stringify(responseBody),
+  // }
 }
 
 module.exports = { handler }
