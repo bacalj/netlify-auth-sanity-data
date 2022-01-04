@@ -7,23 +7,24 @@
   <script src="workings.js"></script>
 </head>
 <body>
-  <div class="app">
+  <div class="app logged-out">
     
-    <h2>Authenticate with Netlify</h2>
-    <div class="netlify box">
-      <!-- <div class="post-it one">All the stuff in this box is rendered by Netlify</div> -->
-      <div class="data-netlify" data-netlify-identity-menu></div>
-      <button class="see-user" onclick="seeUser()">See local user data in console</button>
+    <div class="grid">
+      <div class="netlify box">
+        <h2>Authenticate with Netlify</h2>
+        <div class="data-netlify" data-netlify-identity-menu></div>
+        <button class="see-user" onclick="seeUser()">See local user data in console</button>
+      </div>
 
+      <div class="sanity box">
+        <h2>Read & Write to Sanity</h2>
+        <button onclick="createUserNote()">create-note 6</button>
+      </div>
     </div>
 
-    <h2>Read & Write this Users Data in Sanity</h2>
-    <button onclick="createUserNote()" class="sanity box">create-note 6</button>
+    <div class="log">
+      <ul id="messages"></ul>
     </div>
-  </div>
-
-  <div class="info">
-    <ol id="messages"></ol>
   </div>
 
   

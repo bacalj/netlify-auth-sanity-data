@@ -29,10 +29,12 @@ function renderNotes(){
 
 async function createUserNote(){
 
+    writeMessage('foos')
+    
     if (JSON.parse(localStorage.getItem('gotrue.user')) !== null){
         const localUser = JSON.parse(localStorage.getItem('gotrue.user'))
         const token = localUser.token.access_token
-    
+         
         fetch('/.netlify/functions/create-note?foo=bar', {
             headers: {
                 Authorization: `bearer ${token}`
@@ -41,5 +43,11 @@ async function createUserNote(){
             console.log(r)
         })
     } 
-
 }
+
+browser.cookies.onChanged.addListener(function(changeInfo) {
+    console.log('Cookie changed: ' +
+                '\n * Cookie: ' + JSON.stringify(changeInfo.cookie) +
+                '\n * Cause: ' + changeInfo.cause +
+                '\n * Removed: ' + changeInfo.removed);
+});
