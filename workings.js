@@ -45,7 +45,7 @@ async function createUserNote(){
     } 
 }
 
-browser.cookies.onChanged.addListener(function(changeInfo) {
+document.cookies.onChanged.addListener(function(changeInfo) {
     console.log('Cookie changed: ' +
                 '\n * Cookie: ' + JSON.stringify(changeInfo.cookie) +
                 '\n * Cause: ' + changeInfo.cause +
