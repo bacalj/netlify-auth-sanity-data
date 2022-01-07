@@ -15,18 +15,17 @@ const handler = async function (event) {
   const { user } = data
 
   /* 
-      app_metadata
-      give the user a role as they are created, could be programattic if using API and not just widget 
-      user_metadata
-      spread submitted metadata into user
-      did not work last time maybe this commit will fix
+      prepare data to pass through to netlify
   */
+
   const netlifyResponseBody = {
     app_metadata: {
-      roles: ['basic']
+      roles: ['basic'],
+      app_metadata_other_key: 'app noice'
     },
     user_metadata: {
       ...user.user_metadata,
+      user_metadata_other_key: 'user cheesz'
     },
   }
 
