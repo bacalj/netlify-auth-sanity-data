@@ -14,6 +14,8 @@ const handler = async function (event) {
   const data = JSON.parse(event.body)
   const { user } = data
 
+  console.log("user submitted from widget: ", user)
+
   /* 
       prepare data to pass through to netlify
   */
