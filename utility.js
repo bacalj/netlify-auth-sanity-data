@@ -31,8 +31,8 @@ window.netlifyIdentity.on('init', () => {
     writeMessage('initialized netlifyIdentity at' + niceTime())
 })
 
-window.netlifyIdentity.on('currentUser', () => {
-    writeMessage('is currentUser an event?')
+window.netlifyIdentity.on('login', () => {
+    writeMessage('logged in the user')
 })
 
 
