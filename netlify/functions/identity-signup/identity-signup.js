@@ -14,6 +14,7 @@ const handler = async function (event) {
   const data = JSON.parse(event.body)
   const { user } = data
 
+  /* look */
   const responseBody = {
     app_metadata: {
       roles: ['basic-user']
@@ -23,6 +24,8 @@ const handler = async function (event) {
     },
   }
 
+  console.log(responseBody)
+
   /* create the user in sanity with the new users id as the sanity document id */
   const doc = {
     _id: user.id,
@@ -31,11 +34,9 @@ const handler = async function (event) {
     fullName: user.user_metadata.full_name,
   }
 
-  console.log("create the user in sanity: ", doc)
-
   try {
     const result = await client.createIfNotExists(doc).then((res) => {
-      console.log('SANITY RES?: ', res)
+      console.log('SANITY RESPONSE: ', res)
     })
     return {
       statusCode: 200,
@@ -49,17 +50,6 @@ const handler = async function (event) {
       body: error.responseBody || JSON.stringify({ error: 'An error occurred' }),
     }
   }
-  
-  
-  // client.createIfNotExists(doc).then((res) => {
-  //   console.log(res)
-  //   console.log(`user with email ${user.email} was created (or was already present)`)
-  // })
-  
-  // return {
-  //   statusCode: 200,
-  //   body: JSON.stringify(responseBody),
-  // }
 }
 
 module.exports = { handler }
