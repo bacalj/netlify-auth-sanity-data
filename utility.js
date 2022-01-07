@@ -27,8 +27,8 @@ function setFoo(str){
 // });
 
 //document.addEventListener("DOMContentLoaded", function() {
-window.netlifyIdentity.on('init', () => {
-    writeMessage('initialized netlifyIdentity at' + niceTime())
+window.netlifyIdentity.on('init', (u) => {
+    writeMessage('initialized netlifyIdentity at' + niceTime(), + ' user is: ', u)
 })
 
 window.netlifyIdentity.on('login', () => {
