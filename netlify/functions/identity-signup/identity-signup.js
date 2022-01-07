@@ -14,17 +14,21 @@ const handler = async function (event) {
   const data = JSON.parse(event.body)
   const { user } = data
 
-  /* look */
-  const responseBody = {
+  /* 
+      app_metadata
+      give the user a role as they are created, could be programattic if using API and not just widget 
+      user_metadata
+      spread submitted metadata into user
+      did not work last time maybe this commit will fix
+  */
+  const netlifyResponseBody = {
     app_metadata: {
-      roles: ['basic-user']
+      roles: ['basic']
     },
     user_metadata: {
       ...user.user_metadata,
     },
   }
-
-  console.log(responseBody)
 
   /* create the user in sanity with the new users id as the sanity document id */
   const doc = {
@@ -41,7 +45,7 @@ const handler = async function (event) {
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(result),
+      body: JSON.stringify(netlifyResponseBody),
     }
   } catch (error) {
     return {
