@@ -14,26 +14,25 @@ const handler = async function (event) {
   const data = JSON.parse(event.body)
   const { user } = data
 
-  console.log("user submitted from widget: ", user)
-
   /* 
-      prepare data to pass through to netlify
-      not sure why the basic role ends up in user.app_metadata.roles[] and not in user.role
+    prepare data to pass through to netlify as user is created
   */
 
   const netlifyResponseBody = {
-    role: 'bob',
+
     app_metadata: {
       roles: ['basic'],
-      app_metadata_other_key: 'app noice'
+      app_other_thing: 'some app value'
     },
     user_metadata: {
       ...user.user_metadata,
-      user_metadata_other_key: 'user cheesz'
+      user_other_thing: 'some user value'
     },
   }
 
-  /* create the user in sanity with the new users id as the sanity document id */
+  /* 
+    create the user in sanity with the new users id as the sanity document id 
+  */
   const doc = {
     _id: user.id,
     _type: 'webUser',
