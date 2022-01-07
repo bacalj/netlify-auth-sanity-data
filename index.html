@@ -4,7 +4,8 @@
   <title>Authy Front End App</title>
   <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <link rel="stylesheet" href="style.css">
-  <script src="workings.js"></script>
+  <script src="utility.js"></script>
+  <script src="crud.js"></script>
 </head>
 <body>
   <div class="app logged-out">
@@ -22,11 +23,13 @@
         <h2>Read & Write to Sanity</h2>
         <button onclick="createUserNote()">create-note 6</button>
       </div>
+
+      <div class="log">
+        <ul id="messages"></ul>
+      </div>
     </div>
 
-    <div class="log">
-      <ul id="messages"></ul>
-    </div>
+
   </div>
 
   

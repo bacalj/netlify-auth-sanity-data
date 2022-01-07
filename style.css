@@ -43,3 +43,8 @@ li {
 ul {
     padding:0px;
 }
+
+.log {
+    background-color: aliceblue;
+    font-family: monospace;
+}
