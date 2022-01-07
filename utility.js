@@ -26,7 +26,11 @@ function setFoo(str){
 //                 '\n * Removed: ' + changeInfo.removed);
 // });
 
-//document.addEventListener("DOMContentLoaded", function() {
+/*
+https://github.com/netlify/netlify-identity-widget
+
+*/
+
 window.netlifyIdentity.on('init', (u) => {
     writeMessage('initialized netlifyIdentity at' + niceTime(), + ' user is: ', u)
 })
