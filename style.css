@@ -14,7 +14,7 @@ body {
     height: 100%;
 }
 
-.box {
+.box, .log {
     padding:20px 30px 20px 40px;
 }
 
@@ -23,14 +23,6 @@ body {
     height: 50px;
     display: inline-block;
 }
-
-/* .sanity.box {
-    background-color: rgba(248, 224, 220, .5);
-}
-
-.netlify.box {
-    background-color: rgba(185, 216, 223, .5);
-} */
 
 a {
     color: #1a0909;
@@ -42,9 +34,4 @@ li {
 
 ul {
     padding:0px;
-}
-
-.log {
-    background-color: aliceblue;
-    font-family: monospace;
 }
