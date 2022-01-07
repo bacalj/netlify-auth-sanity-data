@@ -18,9 +18,11 @@ const handler = async function (event) {
 
   /* 
       prepare data to pass through to netlify
+      not sure why the basic role ends up in user.app_metadata.roles[] and not in user.role
   */
 
   const netlifyResponseBody = {
+    role: 'bob',
     app_metadata: {
       roles: ['basic'],
       app_metadata_other_key: 'app noice'
