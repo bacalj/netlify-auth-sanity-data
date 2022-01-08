@@ -49,7 +49,7 @@ const handler = async (event, context) => {
   const newNote = {
     _type: 'note',
     title: event.queryStringParameters.note,
-    webUser: {
+    belongsTo: {
       _type: 'reference',
       _ref: uId
     }
