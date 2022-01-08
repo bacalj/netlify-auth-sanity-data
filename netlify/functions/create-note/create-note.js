@@ -53,7 +53,9 @@ const handler = async (event, context) => {
 
   try {
     
-    console.log("try{}: ", newNote)
+    const result = await client.createIfNotExists(newNote).then((res) => {
+      console.log('SANITY RESPONSE: ', res)
+    })
 
     return {
       statusCode: 200,
