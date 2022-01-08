@@ -16,9 +16,12 @@ const handler = async (event, context) => {
   //console.log("|||||||| CONTEXT: -->", context )
   //note text is correct
   const noteText = event.queryStringParameters.note
-  
-  const user = context.clientContext.user
-  console.log("USER: -->", user )
+  const uId = context.clientContext.user.sub
+  const uRoles = context.clientContext.user.app_metadata.roles
+
+  console.log("uId: -->", uId )
+  console.log("uRoles: -->", uRoles )
+
 
 
   if (!user) {
@@ -26,10 +29,13 @@ const handler = async (event, context) => {
     return {
       statusCode: 401,
       body: JSON.stringify({
-        data: 'soree',
+        data: 'no go',
       }),
     }
   }
+
+  /* TODO NEXT: we should do like above block and check the role as well */
+
 
   // const newNote = {
   //   _type: 'note',
