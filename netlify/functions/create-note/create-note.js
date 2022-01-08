@@ -12,12 +12,13 @@ const client = sanityClient({
 
 const handler = async (event, context) => {
 
-  const { identity, user } = context.clientContext
+  //const { identity, user } = context.clientContext
+  const noteText = event.queryStringParameters.note
+  const identidad = context.clientContext
 
-  console.log("EVENT: --> ", event)
-  console.log("CONTEXT: -->", context)
-  console.log("IDENTITY: ", identity)
-  console.log("USER ", user)
+  console.log("NOTE: --> ", noteText )
+  console.log("IDENTIDAD: -->", identidad )
+
 
   if (!user) {
     console.log('No user!')
