@@ -48,38 +48,24 @@ const handler = async (event, context) => {
 
   const newNote = {
     _type: 'note',
-    title: event.queryStringParameters.note
+    title: event.queryStringParameters.note,
+    webUser: {
+      _type: 'reference',
+      _ref: uId
+    }
   }
 
   try {
-
-    /* TODO - ok, this second write of the reference didnt work, but I think a 
-    better architecture is to include the reference on the note to the user 
-    so I can just do a single write of the note record with a field like user which is a ref */
     
     const result = await client.create(newNote).then((res) => {
-      console.log('SANITY RESPONSE 1 on note creation: ', res)
-      if (res._createdAt){
-        console.log(`OK. now add ref to ${res._id} on ${uId}. Here we go: ` )
-        client.patch(uId)
-          .setIfMissing({notes: []})
-          .append('notes', [
-            {
-              _type: 'reference',
-              _ref: res._id
-            }
-          ])
-          .commit().then((resulto) => {
-            console.log('SANITY RESULT 2 - on ref creation: ', resulto)
-          })
-      }
+      console.log('RESULT FROM SANITY: ', res)
     })
 
 
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({uid: uId, roles: uRoles})
+      body: JSON.stringify(result)
     }
   } 
   
