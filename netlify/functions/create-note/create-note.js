@@ -55,7 +55,10 @@ const handler = async (event, context) => {
     
     const result = await client.create(newNote).then((res) => {
       console.log('SANITY RESPONSE: ', res)
+    }).then(() => {
+      "now create the referecne and add it to the user record?"
     })
+
 
     return {
       statusCode: 200,
