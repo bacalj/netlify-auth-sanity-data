@@ -1,7 +1,5 @@
 const process = require('process')
 
-//TODO - import nanoid and use it to make the new note and new reference ids
-
 const sanityClient = require('@sanity/client')
 
 const client = sanityClient({
@@ -14,9 +12,6 @@ const client = sanityClient({
 
 const handler = async (event, context) => {
 
-  //console.log("|||||||| EVENT: -->", event )
-  //console.log("|||||||| CONTEXT: -->", context )
-  //note text is correct
   const noteText = event.queryStringParameters.note
   const uId = context.clientContext.user.sub
   const uRoles = context.clientContext.user.app_metadata.roles
@@ -48,7 +43,7 @@ const handler = async (event, context) => {
 
   const newNote = {
     _type: 'note',
-    title: event.queryStringParameters.note,
+    title: noteText,
     belongsTo: {
       _type: 'reference',
       _ref: uId
