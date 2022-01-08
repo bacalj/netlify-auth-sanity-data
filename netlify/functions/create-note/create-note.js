@@ -21,27 +21,27 @@ const handler = async (event, context) => {
   console.log("IDENTIDAD: -->", identidad )
 
 
-  if (!user) {
-    console.log('No user!')
-    return {
-      statusCode: 401,
-      body: JSON.stringify({
-        data: 'soree',
-      }),
-    }
-  }
+  // if (!user) {
+  //   console.log('No user!')
+  //   return {
+  //     statusCode: 401,
+  //     body: JSON.stringify({
+  //       data: 'soree',
+  //     }),
+  //   }
+  // }
 
-  const newNote = {
-    _type: 'note',
-    webUser: user.sub,
-    note: event.queryStringParameters.note
-  }
+  // const newNote = {
+  //   _type: 'note',
+  //   webUser: user.sub,
+  //   note: event.queryStringParameters.note
+  // }
 
-  console.log("handler{}: ", newNote)
+  // console.log("handler{}: ", newNote)
 
   try {
     
-    console.log("try{}: ", newNote)
+    //console.log("try{}: ", newNote)
 
     return {
       statusCode: 200,
