@@ -31,3 +31,11 @@ function createUserNote(){
         })
     } 
 }
+
+function getAndRenderUsersNotes(){
+    // TODO
+    /* call yet another serverless function that will return the results of 
+    a query for the logged in users notes 
+
+    make this call whenever local state changes? maybe just call it from the function above?
+}
