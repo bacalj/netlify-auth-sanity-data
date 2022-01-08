@@ -52,6 +52,10 @@ const handler = async (event, context) => {
   }
 
   try {
+
+    /* TODO - ok, this second write of the reference didnt work, but I think a 
+    better architecture is to include the reference on the note to the user 
+    so I can just do a single write of the note record with a field like user which is a ref */
     
     const result = await client.create(newNote).then((res) => {
       console.log('SANITY RESPONSE 1 on note creation: ', res)
