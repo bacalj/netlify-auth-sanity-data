@@ -17,12 +17,12 @@ async function createUserNote(){
         const token = localUser.token.access_token
          
         console.log(localUser.id, noteText)
-        // fetch(`/.netlify/functions/create-note?note=${noteText}`, {
-        //     headers: {
-        //         Authorization: `bearer ${token}`
-        //     }
-        // }).then((r) => {
-        //     console.log(r)
-        // })
+        fetch(`/.netlify/functions/create-note?note=${noteText}`, {
+            headers: {
+                Authorization: `bearer ${token}`
+            }
+        }).then((r) => {
+            console.log(r)
+        })
     } 
 }
