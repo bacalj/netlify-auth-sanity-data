@@ -12,11 +12,10 @@ const client = sanityClient({
 
 const handler = async (event, context) => {
 
-  //const { identity, user } = context.clientContext
+  //note text is correct
   const noteText = event.queryStringParameters.note
+  
   const identidad = context.clientContext
-
-  console.log("NOTE: --> ", noteText )
   console.log("IDENTIDAD: -->", identidad )
 
 
