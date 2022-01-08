@@ -1,5 +1,7 @@
 const process = require('process')
 
+//TODO - import nanoid and use it to make the new note and new reference ids
+
 const sanityClient = require('@sanity/client')
 
 const client = sanityClient({
@@ -49,8 +51,6 @@ const handler = async (event, context) => {
     note: event.queryStringParameters.note
   }
 
-  console.log("handler{}: ", newNote)
-
   try {
     
     console.log("try{}: ", newNote)
@@ -63,6 +63,7 @@ const handler = async (event, context) => {
   } 
   
   catch (error) {
+    console.log(error)
     return {
       headers: { 'Content-Type': 'application/json' },
       statusCode: 500,
