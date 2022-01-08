@@ -8,15 +8,18 @@ function renderNotes(){
     }
 }
 
-async function createUserNote(){
+function createUserNote(){
 
     let noteText = document.getElementById('new-note').value 
 
     if (netlifyIdentity.currentUser() !== null){
+
+        //maybe I need to use some native method to access token correctly?
         const localUser = JSON.parse(localStorage.getItem('gotrue.user'))
         const token = localUser.token.access_token
+
+        console.log(token)
          
-        console.log(localUser.id, noteText)
         fetch(`/.netlify/functions/create-note?note=${noteText}`, {
             headers: {
                 Authorization: `bearer ${token}`
