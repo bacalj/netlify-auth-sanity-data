@@ -48,7 +48,7 @@ const handler = async (event, context) => {
 
   const newNote = {
     _type: 'note',
-    note: event.queryStringParameters.note
+    title: event.queryStringParameters.note
   }
 
   try {
