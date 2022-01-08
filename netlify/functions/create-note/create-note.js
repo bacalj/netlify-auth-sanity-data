@@ -57,7 +57,7 @@ const handler = async (event, context) => {
       console.log('SANITY RESPONSE 1 on note creation: ', res)
       if (res._createdAt){
         console.log(`OK. now add ref to ${res._id} on ${uId}. Here we go: ` )
-        await client.patch(uId)
+        client.patch(uId)
           .setIfMissing({notes: []})
           .append('notes', [
             {
