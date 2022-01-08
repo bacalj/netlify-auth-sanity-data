@@ -22,38 +22,43 @@ const handler = async (event, context) => {
   console.log("uId: -->", uId )
   console.log("uRoles: -->", uRoles )
 
+  /* no user, no go */
+  if (!uId) {
+    console.log('No user!')
+    return {
+      statusCode: 401,
+      body: JSON.stringify({
+        data: 'no go',
+      }),
+    }
+  }
 
-  /* gotta reimplekent */
-  // if (!user) {
-  //   console.log('No user!')
-  //   return {
-  //     statusCode: 401,
-  //     body: JSON.stringify({
-  //       data: 'no go',
-  //     }),
-  //   }
-  // }
+  /* no basic role, no go */
+  if (uRoles[0] !== 'basic') {
+    console.log('No basic role!')
+    return {
+      statusCode: 401,
+      body: JSON.stringify({
+        data: 'no go',
+      }),
+    }
+  }
 
-  /* TODO NEXT: we should do like above block and check the role as well */
+  const newNote = {
+    _type: 'note',
+    note: event.queryStringParameters.note
+  }
 
-
-  // const newNote = {
-  //   _type: 'note',
-  //   webUser: user.sub,
-  //   note: event.queryStringParameters.note
-  // }
-
-  // console.log("handler{}: ", newNote)
+  console.log("handler{}: ", newNote)
 
   try {
     
-    //console.log("try{}: ", newNote)
+    console.log("try{}: ", newNote)
 
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-      //body: JSON.stringify(result),
-      body: 'hello'
+      body: JSON.stringify({uid: uid, roles: uRoles})
     }
   } 
   

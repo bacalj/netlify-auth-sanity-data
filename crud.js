@@ -25,6 +25,9 @@ function createUserNote(){
             }
         }).then((r) => {
             console.log(r)
+            // TODO handle response from netlify function, e.g. if it 500s because logout has expired
+            // we should prompt user to refresh login
+
         })
     } 
 }
