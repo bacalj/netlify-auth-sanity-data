@@ -54,9 +54,19 @@ const handler = async (event, context) => {
   try {
     
     const result = await client.create(newNote).then((res) => {
-      console.log('SANITY RESPONSE: ', res)
+      console.log('SANITY RESPONSE 1 on note creation: ', res)
       if (res._createdAt){
-        console.log('the note with id ' + res._id + 'now exists. Now create a reference to it on user document ' + uId )
+        console.log(`OK. now add ref to ${res._id} on ${uId}. Here we go: ` )
+        client.patch(uId)
+          .setIfMissing({notes: []})
+          .append('notes', [
+            {
+              _type: 'reference',
+              _ref: res._id
+            }
+          ]).then((resultos) => {
+            console.log('SANITY RESPONSE 2 on ref creation: ', resultos)
+          })
       }
     })
 
