@@ -53,7 +53,7 @@ const handler = async (event, context) => {
 
   try {
     
-    const result = await client.createIfNotExists(newNote).then((res) => {
+    const result = await client.create(newNote).then((res) => {
       console.log('SANITY RESPONSE: ', res)
     })
 
