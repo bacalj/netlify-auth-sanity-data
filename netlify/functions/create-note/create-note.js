@@ -15,7 +15,7 @@ const handler = async (event, context) => {
   const { identity, user } = context.clientContext
 
   console.log("IDENTITY: ", identity)
-  console.log("USER: ", user)
+  console.log("USER.sub: ", user.sub)
 
   if (!user) {
     console.log('No user!')
@@ -27,18 +27,19 @@ const handler = async (event, context) => {
     }
   }
 
-  /* note - see below - user.sub seems like a Google thing, lets see output of this with netlify user */
 
-  /* ACTUALLY it is called sub in this context, but id in the localStorage anyway...
+  const newNote = {
+    _type: 'note',
+    webUser: user.sub,
+    note: event.queryStringParameters.note
+  }
 
-  // const newNote = {
-  //   _type: 'note',
-  //   webUser: user.sub, //netlify's unique id is called sub dunno why
-  //   note: event.queryStringParameters.note
-  // }
+  console.log("handler{}: ", newNote)
 
   try {
-    //const result = await client.create(newNote)
+    
+    console.log("try{}: ", newNote)
+
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },

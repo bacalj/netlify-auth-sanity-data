@@ -17,7 +17,6 @@ const handler = async function (event) {
   /* 
     prepare data to pass through to netlify as user is created
   */
-
   const netlifyResponseBody = {
 
     app_metadata: {
