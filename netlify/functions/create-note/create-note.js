@@ -57,15 +57,16 @@ const handler = async (event, context) => {
       console.log('SANITY RESPONSE 1 on note creation: ', res)
       if (res._createdAt){
         console.log(`OK. now add ref to ${res._id} on ${uId}. Here we go: ` )
-        client.patch(uId)
+        await client.patch(uId)
           .setIfMissing({notes: []})
           .append('notes', [
             {
               _type: 'reference',
               _ref: res._id
             }
-          ]).then((resultos) => {
-            console.log('SANITY RESPONSE 2 on ref creation: ', resultos)
+          ])
+          .commit().then((resulto) => {
+            console.log('SANITY RESULT 2 - on ref creation: ', resulto)
           })
       }
     })
