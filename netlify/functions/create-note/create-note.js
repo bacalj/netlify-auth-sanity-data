@@ -15,7 +15,7 @@ const handler = async (event, context) => {
   const { identity, user } = context.clientContext
 
   console.log("IDENTITY: ", identity)
-  console.log("USER.sub: ", user.sub)
+  console.log("USER ", user)
 
   if (!user) {
     console.log('No user!')
