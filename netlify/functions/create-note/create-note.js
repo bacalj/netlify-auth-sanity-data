@@ -14,6 +14,8 @@ const handler = async (event, context) => {
 
   const { identity, user } = context.clientContext
 
+  console.log("EVENT: --> ", event)
+  console.log("CONTEXT: -->", context)
   console.log("IDENTITY: ", identity)
   console.log("USER ", user)
 
@@ -26,7 +28,6 @@ const handler = async (event, context) => {
       }),
     }
   }
-
 
   const newNote = {
     _type: 'note',
