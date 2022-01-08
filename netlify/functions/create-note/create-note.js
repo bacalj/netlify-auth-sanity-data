@@ -23,16 +23,16 @@ const handler = async (event, context) => {
   console.log("uRoles: -->", uRoles )
 
 
-
-  if (!user) {
-    console.log('No user!')
-    return {
-      statusCode: 401,
-      body: JSON.stringify({
-        data: 'no go',
-      }),
-    }
-  }
+  /* gotta reimplekent */
+  // if (!user) {
+  //   console.log('No user!')
+  //   return {
+  //     statusCode: 401,
+  //     body: JSON.stringify({
+  //       data: 'no go',
+  //     }),
+  //   }
+  // }
 
   /* TODO NEXT: we should do like above block and check the role as well */
 
