@@ -12,24 +12,24 @@ const client = sanityClient({
 
 const handler = async (event, context) => {
 
-  console.log("|||||||| EVENT: -->", event )
-  console.log("|||||||| CONTEXT: -->", context )
+  //console.log("|||||||| EVENT: -->", event )
+  //console.log("|||||||| CONTEXT: -->", context )
   //note text is correct
   const noteText = event.queryStringParameters.note
   
-  const identidad = context.clientContext
-  console.log("IDENTIDAD: -->", identidad )
+  const user = context.clientContext.user
+  console.log("USER: -->", user )
 
 
-  // if (!user) {
-  //   console.log('No user!')
-  //   return {
-  //     statusCode: 401,
-  //     body: JSON.stringify({
-  //       data: 'soree',
-  //     }),
-  //   }
-  // }
+  if (!user) {
+    console.log('No user!')
+    return {
+      statusCode: 401,
+      body: JSON.stringify({
+        data: 'soree',
+      }),
+    }
+  }
 
   // const newNote = {
   //   _type: 'note',
