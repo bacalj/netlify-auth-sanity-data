@@ -35,3 +35,50 @@ li {
 ul {
     padding:0px;
 }
+
+body.logged-out h2.sanity-title {
+    color: silver;
+}
+
+body.logged-in .sanity-no-go {
+    display:none;
+}
+
+body.logged-out .sanity-operations {
+    display:none;
+}
+
+.sanity-no-go {
+    border:4px dashed silver;
+    border-radius: 6px;
+    height: 300px;
+    display:grid;
+}
+
+.sanity-no-go > div {
+    align-self: center;
+    justify-self: center;
+}
+
+.sanity-operations input {
+    background-color: white;
+    border:1px solid #6B6B6B;
+    padding:4px;
+    border-radius: 1px;
+    width:200px;
+}
+.sanity-operations button, .data-netlify a {
+    background-color: white;
+    border:1px solid #6B6B6B;
+    padding:4px 6px;
+    border-radius: 3px;
+}
+
+.data-netlify li {
+    display: inline-block;
+    margin-right:6px;
+}
+
+.data-netlify li a {
+    text-decoration: none;
+}

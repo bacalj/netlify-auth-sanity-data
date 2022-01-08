@@ -3,11 +3,12 @@
 <head>
   <title>Authy Front End App</title>
   <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="https://unpkg.com/validator@latest/validator.min.js"></script>
   <link rel="stylesheet" href="style.css">
   <script src="utility.js"></script>
   <script src="crud.js"></script>
 </head>
-<body>
+<body class="logged-out">
   <div class="app">
     
     <div class="grid">
@@ -19,8 +20,21 @@
 
       <div class="sanity box">
         <img class="logo" src="/sanityicon.png" alt="sanity icon">
-        <h2>Read & Write to Sanity</h2>
-        <button onclick="createUserNote()">create-note 6</button>
+        <h2 class="sanity-title">Read & Write to Sanity</h2>
+        
+        <div class="sanity-no-go">
+          <div>
+            <em style="color:silver">login on the left to access your data</em>
+          </div>
+        </div>
+
+        <div class="sanity-operations">
+          <input type="text" id="new-note">
+          <button onclick="createUserNote()">add note</button>
+          <ul id="users-notes">
+
+          </ul>
+        </div>
       </div>
     </div>
   </div>

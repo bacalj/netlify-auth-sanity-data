@@ -10,18 +10,19 @@ function renderNotes(){
 
 async function createUserNote(){
 
-    writeMessage('foos')
-    
-    if (JSON.parse(localStorage.getItem('gotrue.user')) !== null){
+    let noteText = document.getElementById('new-note').value 
+
+    if (netlifyIdentity.currentUser() !== null){
         const localUser = JSON.parse(localStorage.getItem('gotrue.user'))
         const token = localUser.token.access_token
          
-        fetch('/.netlify/functions/create-note?foo=bar', {
-            headers: {
-                Authorization: `bearer ${token}`
-            }
-        }).then((r) => {
-            console.log(r)
-        })
+        console.log(localUser.id, noteText)
+        // fetch(`/.netlify/functions/create-note?note=${noteText}`, {
+        //     headers: {
+        //         Authorization: `bearer ${token}`
+        //     }
+        // }).then((r) => {
+        //     console.log(r)
+        // })
     } 
 }
