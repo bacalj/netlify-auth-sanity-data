@@ -12,6 +12,8 @@ const client = sanityClient({
 
 const handler = async (event, context) => {
 
+  console.log("|||||||| EVENT: -->", event )
+  console.log("|||||||| CONTEXT: -->", context )
   //note text is correct
   const noteText = event.queryStringParameters.note
   
