@@ -55,8 +55,9 @@ const handler = async (event, context) => {
     
     const result = await client.create(newNote).then((res) => {
       console.log('SANITY RESPONSE: ', res)
-    }).then(() => {
-      "now create the referecne and add it to the user record?"
+      if (res._createdAt){
+        console.log('the note with id ' + res._id + 'now exists. Now create a reference to it on user document ' + uId )
+      }
     })
 
 
