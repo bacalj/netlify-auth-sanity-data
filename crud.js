@@ -36,7 +36,9 @@ function getUsersNotes(){
 
         const localUser = JSON.parse(localStorage.getItem('gotrue.user'))
         const token = localUser.token.access_token
-         
+        
+        console.log(token)
+
         fetch(`/.netlify/functions/user-notes`, {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -46,7 +48,7 @@ function getUsersNotes(){
             if (!r.ok){
                 alert('Something is messed up. You could try logging out and back in.')
             }
-            return r
+            // return r
         })
     } 
 }
