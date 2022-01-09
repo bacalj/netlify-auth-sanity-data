@@ -28,6 +28,8 @@ function createUserNote(){
             }
         })
     } 
+
+    document.getElementById('new-note').value = ''
 }
 
 function getUsersNotes(){
