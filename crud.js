@@ -45,13 +45,13 @@ function getUsersNotes(){
             headers: {
                 Authorization: `Bearer ${token}`
             }
-        }).then((r) => {
-            console.log(r)
-            if (!r.ok){
-                alert('Something is messed up. You could try logging out and back in.')
-            }
-            // return r
         })
+        .then((response) => {
+            return response.json()
+        }).then((data) => {
+            console.log(data)
+        })
+
     } 
 }
 
