@@ -52,7 +52,7 @@ function getUsersNotes(){
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    console.log('getting notes...')
-    var notim = getUsersNotes()
-    console.log(notim)
+    // console.log('getting notes...')
+    // var notim = getUsersNotes()
+    // console.log(notim)
 });
