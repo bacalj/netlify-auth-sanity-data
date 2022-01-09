@@ -43,23 +43,23 @@ const handler = async (event, context) => {
     }
   }
 
-  const query = `*[_type == "note" && references(${uId})]`
+  const query = `*[_type == "note" && references("${uId})"]`
 
   console.log("CLIENT: ", client)
   console.log("QUERY: ", query)
 
-  // return client
-  //   .fetch(query)
-  //   .then((result) => ({
-  //     statusCode: 200,
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify(result),
-  //   }))
-  //   .catch((error) => ({
-  //     headers: { 'Content-Type': 'application/json' },
-  //     statusCode: error.statusCode || 500,
-  //     body: error.responseBody || JSON.stringify({ error: 'Unknown error occurred' }),
-  //   }))
+  return client
+    .fetch(query)
+    .then((result) => ({
+      statusCode: 200,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(result),
+    }))
+    .catch((error) => ({
+      headers: { 'Content-Type': 'application/json' },
+      statusCode: error.statusCode || 500,
+      body: error.responseBody || JSON.stringify({ error: 'Unknown error occurred' }),
+    }))
 }
 
 module.exports = { handler }
