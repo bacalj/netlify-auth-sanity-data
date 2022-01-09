@@ -12,7 +12,6 @@ const client = sanityClient({
 
 const handler = async (event, context) => {
 
-  const noteText = event.queryStringParameters.note
   const uId = context.clientContext.user.sub
   const uRoles = context.clientContext.user.app_metadata.roles
 
@@ -38,37 +37,20 @@ const handler = async (event, context) => {
     }
   }
 
-  const newNote = {
-    _type: 'note',
-    title: noteText,
-    belongsTo: {
-      _type: 'reference',
-      _ref: uId
-    }
-  }
+  const query = `*[_type == "note" && references(${uId})]`
 
-  try {
-    
-    const result = await client.create(newNote).then((res) => {
-      console.log('RESULT FROM SANITY: ', res)
-    })
-
-
-    return {
+  return client
+    .fetch(query)
+    .then((result) => ({
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(result)
-    }
-  } 
-  
-  catch (error) {
-    console.log(error)
-    return {
+      body: JSON.stringify(result),
+    }))
+    .catch((error) => ({
       headers: { 'Content-Type': 'application/json' },
-      statusCode: 500,
-      body: error.responseBody || JSON.stringify({ error: 'An error occurred' }),
-    }
-  }
+      statusCode: error.statusCode || 500,
+      body: error.responseBody || JSON.stringify({ error: 'Unknown error occurred' }),
+    }))
 }
 
 module.exports = { handler }

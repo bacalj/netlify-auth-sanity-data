@@ -16,8 +16,6 @@ function createUserNote(){
 
         const localUser = JSON.parse(localStorage.getItem('gotrue.user'))
         const token = localUser.token.access_token
-
-        console.log(token)
          
         fetch(`/.netlify/functions/create-note?note=${noteText}`, {
             headers: {
@@ -26,16 +24,35 @@ function createUserNote(){
         }).then((r) => {
             console.log(r)
             if (!r.ok){
-                alert('Something is messed up. You could try logging out and logging back in again.')
+                alert('Something is messed up. You could try logging out and back in.')
             }
         })
     } 
 }
 
-function getAndRenderUsersNotes(){
-    // TODO
-    /* call yet another serverless function that will return the results of 
-    a query for the logged in users notes 
+function getUsersNotes(){
+    
+    if (netlifyIdentity.currentUser() !== null){
 
-    make this call whenever local state changes? maybe just call it from the function above? */
+        const localUser = JSON.parse(localStorage.getItem('gotrue.user'))
+        const token = localUser.token.access_token
+         
+        fetch(`/.netlify/functions/user-notes`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((r) => {
+            console.log(r)
+            if (!r.ok){
+                alert('Something is messed up. You could try logging out and back in.')
+            }
+            return r
+        })
+    } 
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    console.log('getting notes...')
+    var notim = getUsersNotes()
+    console.log(notim)
+});
