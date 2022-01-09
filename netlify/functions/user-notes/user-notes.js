@@ -12,6 +12,9 @@ const client = sanityClient({
 
 const handler = async (event, context) => {
 
+  console.log("EVENT: ", event)
+  console.log("CONTEXT: ", context)
+
   const uId = context.clientContext.user.sub
   const uRoles = context.clientContext.user.app_metadata.roles
 
