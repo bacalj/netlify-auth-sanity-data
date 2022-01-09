@@ -67,11 +67,14 @@ body.logged-out .sanity-operations {
     border-radius: 1px;
     width:200px;
 }
-.sanity-operations button, .data-netlify a {
+
+button, .data-netlify a {
     background-color: white;
     border:1px solid #6B6B6B;
     padding:4px 6px;
     border-radius: 3px;
+    text-decoration: none;
+    font-size:14px;
 }
 
 .data-netlify li {
@@ -79,6 +82,6 @@ body.logged-out .sanity-operations {
     margin-right:6px;
 }
 
-.data-netlify li a {
-    text-decoration: none;
+p, div, span, a {
+    font-size:14px;
 }
