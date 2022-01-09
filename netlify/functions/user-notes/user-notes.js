@@ -43,7 +43,7 @@ const handler = async (event, context) => {
     }
   }
 
-  const query = `*[_type == "note" && references("${uId})"]`
+  const query = `*[_type == "note" && references("${uId}")]`
 
   console.log("CLIENT: ", client)
   console.log("QUERY: ", query)
