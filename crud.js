@@ -3,26 +3,20 @@ function renderNotes(arr){
     document.getElementById("notes").innerHTML = ""
 
     let notes = arr.filter((n) => n.title.length > 0 )
-    
-
-    // for (let i = 0; i < notes.length; i++) {
-    //     let newItem = document.createElement('li');
-    //     let newText = document.createTextNode(notes[i].title);
-    //     //console.log(notes[i])
-    //     newItem.appendChild(newText);
-    //     document.getElementById("notes").appendChild(newItem);  
-    // }
 
     notes.forEach(obj => {
+
         let newItem = document.createElement('li');
-        let newText = document.createTextNode(obj.title);
+        newItem.id = obj.id
+
         let newButton = document.createElement('button');
-        newButton.addEventListener('click', deleteNote)
+        newButton.addEventListener('click', deleteUserNote)
         newButton.innerHTML = '&times';
         newButton.setAttribute('data-delete-id', obj.id)
+
         newItem.appendChild(newButton)
-        newItem.appendChild(newText);
-        newItem.setAttribute('data-note-id', obj.id)
+        newItem.appendChild(document.createTextNode(obj.title));
+        
         document.getElementById("notes").appendChild(newItem);
     });
 }
@@ -32,13 +26,10 @@ async function createUserNote(){
     let noteText = document.getElementById('new-note').value 
 
     if (netlifyIdentity.currentUser() !== null){
-
-        const localUser = JSON.parse(localStorage.getItem('gotrue.user'))
-        const token = localUser.token.access_token
          
         await fetch(`/.netlify/functions/create-note?note=${noteText}`, {
             headers: {
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${theToken()}`
             }
         }).then((r) => {
             if (r.ok){
@@ -57,12 +48,9 @@ async function getAndRenderUserNotes(){
     
     if (netlifyIdentity.currentUser() !== null){
 
-        const localUser = JSON.parse(localStorage.getItem('gotrue.user'))
-        const token = localUser.token.access_token
-
         await fetch(`/.netlify/functions/user-notes`, {
             headers: {
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${theToken()}`
             }
         })
         .then((response) => {
@@ -75,23 +63,33 @@ async function getAndRenderUserNotes(){
     } 
 }
 
-function deleteNote(e){
-    console.log("delete note called and here is the id: ", e.target.dataset.deleteId )
+
+async function deleteUserNote(e){
+
+    const deleteMe =  e.target.dataset.deleteId
+
+    if (netlifyIdentity.currentUser() !== null){
+         
+        await fetch(`/.netlify/functions/delete-note?note=${deleteMe}`, {
+            headers: {
+                Authorization: `Bearer ${theToken()}`
+            }
+        }).then((r) => {
+            if (r.ok){
+                getAndRenderUserNotes()
+            }
+            if (!r.ok){
+                alert('Something is messed up. You could try logging out and back in.')
+            }
+        })
+    } 
 }
 
-// document.addEventListener("DOMContentLoaded", function() {
-//     if (netlifyIdentity.currentUser() !== null){
-//         getAndRenderUserNotes()
-//     }
-// });
-
-// function userObj(){
-//     if (netlifyIdentity.currentUser() !== null){
-//         const localUser = JSON.parse(localStorage.getItem('gotrue.user'))
-//         const token = localUser.token.access_token
-//         return ({ email: localUser.email,
-//             role: })
-//     } else {
-//         return false
-//     }
-// }
+function theToken(){
+    if (netlifyIdentity.currentUser() !== null){
+        const localUser = JSON.parse(localStorage.getItem('gotrue.user'))
+        return localUser.token.access_token
+    } else {
+        return false
+    }
+}
