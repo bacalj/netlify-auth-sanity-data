@@ -70,7 +70,7 @@ async function deleteUserNote(e){
 
     if (netlifyIdentity.currentUser() !== null){
          
-        await fetch(`/.netlify/functions/delete-note?note=${deleteMe}`, {
+        await fetch(`/.netlify/functions/delete-note?id=${deleteMe}`, {
             headers: {
                 Authorization: `Bearer ${theToken()}`
             }
