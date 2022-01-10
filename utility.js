@@ -6,6 +6,7 @@ window.netlifyIdentity.on('login', (u) => {
     console.log('logging in a user, giving them a token here')
     console.log(u)
     applyBodyClass('logged-in')
+    getAndRenderUserNotes()
 })
 
 window.netlifyIdentity.on('logout', () => {

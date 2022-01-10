@@ -1,5 +1,9 @@
 function renderNotes(arr){
+
+    document.getElementById("notes").innerHTML = ""
+
     let notes = arr.filter((n) => n.length > 0 )
+
     for (let i = 0; i < notes.length; i++) {
         let newItem = document.createElement('li');
         let newText = document.createTextNode(notes[i]);
@@ -22,7 +26,9 @@ function createUserNote(){
                 Authorization: `Bearer ${token}`
             }
         }).then((r) => {
-            console.log(r)
+            if (r.ok){
+                getAndRenderUserNotes()
+            }
             if (!r.ok){
                 alert('Something is messed up. You could try logging out and back in.')
             }
@@ -32,14 +38,12 @@ function createUserNote(){
     document.getElementById('new-note').value = ''
 }
 
-function getUsersNotes(){
+function getAndRenderUserNotes(){
     
     if (netlifyIdentity.currentUser() !== null){
 
         const localUser = JSON.parse(localStorage.getItem('gotrue.user'))
         const token = localUser.token.access_token
-        
-        console.log(localUser)
 
         fetch(`/.netlify/functions/user-notes`, {
             headers: {
@@ -61,7 +65,9 @@ function deleteNote(){
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-
+    if (netlifyIdentity.currentUser() !== null){
+        getAndRenderUserNotes()
+    }
 });
 
 // function userObj(){
