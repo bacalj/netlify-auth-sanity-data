@@ -74,7 +74,14 @@ button, .data-netlify a, #notes li {
     padding:4px 6px;
     border-radius: 3px;
     text-decoration: none;
-    font-size:14px;
+    font-size:16px;
+}
+
+li > button {
+    border:0px;
+    margin-right:10px;
+    font-size:16px;
+    line-height:16px;
 }
 
 .data-netlify li {
