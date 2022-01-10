@@ -38,13 +38,13 @@ const handler = async (event, context) => {
   }
 
   try {
-    const query = `*[_type == "note" && references("${uId}")]`
+    const query = `*[_type == "note" && references("${uId}")]{title, _updatedAt, _id}`
 
     let notes
 
     await client.fetch(query).then((r) => {
       notes = r.map((n) => {
-        return n.title
+        return { title: n.title, updated: n._updatedAt, id: n._id }
       })
     })
 
