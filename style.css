@@ -96,3 +96,31 @@ p, div, span, a {
 #notes li {
     margin-bottom:4px;
 }
+
+.sanity-operations button:hover {
+    cursor:pointer;
+    background-color: rgb(240, 200, 200);
+}
+
+.netlify a:hover {
+    cursor: pointer;
+    background-color: rgb(170, 200, 215);
+}
+
+#animation {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index:100000;
+    background-color: rgba(100,100,100,.5);
+    text-align:center;
+}
+
+#animation img {
+    width:50%;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}

@@ -22,16 +22,21 @@ function renderNotes(arr){
 }
 
 async function createUserNote(){
+    
+    showAnimation()
 
     let noteText = document.getElementById('new-note').value 
 
     if (netlifyIdentity.currentUser() !== null){
-         
+
         await fetch(`/.netlify/functions/create-note?note=${noteText}`, {
             headers: {
                 Authorization: `Bearer ${theToken()}`
             }
         }).then((r) => {
+            
+            removeAnimation()
+
             if (r.ok){
                 getAndRenderUserNotes()
             }
@@ -66,6 +71,8 @@ async function getAndRenderUserNotes(){
 
 async function deleteUserNote(e){
 
+    showAnimation(e)
+
     const deleteMe =  e.target.dataset.deleteId
 
     if (netlifyIdentity.currentUser() !== null){
@@ -75,6 +82,9 @@ async function deleteUserNote(e){
                 Authorization: `Bearer ${theToken()}`
             }
         }).then((r) => {
+
+            removeAnimation()
+
             if (r.ok){
                 getAndRenderUserNotes()
             }
@@ -93,3 +103,37 @@ function theToken(){
         return false
     }
 }
+
+function showAnimation(){
+    document.getElementById('animation').style.display = "grid"
+}
+
+function removeAnimation(){
+    console.log('remove animation')
+    document.getElementById('animation').style.display = "none"
+}
+
+window.netlifyIdentity.on('init', () => {
+    console.log('netlifyIdentity local object ready')
+})
+
+window.netlifyIdentity.on('login', (u) => {
+    console.log('logging in a user, giving them a token here')
+    console.log(u)
+    applyBodyClass('logged-in')
+    getAndRenderUserNotes()
+})
+
+window.netlifyIdentity.on('logout', () => {
+    console.log('user logged out')
+    applyBodyClass('logged-out')
+})
+
+applyBodyClass = (str) => {
+    document.querySelector('body').className = ''
+    document.querySelector('body').classList.add(str)
+}
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    removeAnimation()
+});
