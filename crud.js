@@ -1,5 +1,5 @@
-function renderNotes(){
-    let notes = ["eat", "sleep"]
+function renderNotes(arr){
+    let notes = arr.filter((n) => n.length > 0 )
     for (let i = 0; i < notes.length; i++) {
         let newItem = document.createElement('li');
         let newText = document.createTextNode(notes[i]);
@@ -39,7 +39,7 @@ function getUsersNotes(){
         const localUser = JSON.parse(localStorage.getItem('gotrue.user'))
         const token = localUser.token.access_token
         
-        console.log(token)
+        console.log(localUser)
 
         fetch(`/.netlify/functions/user-notes`, {
             headers: {
@@ -50,13 +50,27 @@ function getUsersNotes(){
             return response.json()
         }).then((data) => {
             console.log(data)
+            renderNotes(data)
         })
 
     } 
 }
 
+function deleteNote(){
+
+}
+
 document.addEventListener("DOMContentLoaded", function() {
-    // console.log('getting notes...')
-    // var notim = getUsersNotes()
-    // console.log(notim)
+
 });
+
+// function userObj(){
+//     if (netlifyIdentity.currentUser() !== null){
+//         const localUser = JSON.parse(localStorage.getItem('gotrue.user'))
+//         const token = localUser.token.access_token
+//         return ({ email: localUser.email,
+//             role: })
+//     } else {
+//         return false
+//     }
+// }

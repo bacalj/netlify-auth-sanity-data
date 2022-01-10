@@ -68,7 +68,7 @@ body.logged-out .sanity-operations {
     width:200px;
 }
 
-button, .data-netlify a {
+button, .data-netlify a, #notes li {
     background-color: white;
     border:1px solid #6B6B6B;
     padding:4px 6px;
@@ -84,4 +84,8 @@ button, .data-netlify a {
 
 p, div, span, a {
     font-size:14px;
+}
+
+#notes li {
+    margin-bottom:4px;
 }
