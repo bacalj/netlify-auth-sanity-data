@@ -1,8 +1,24 @@
 # Netlify Auth & Sanity Data
 
-A bare minimum app that allows a Netlify identity user to log in, and securely read and write data scoped to their user in a private Sanity datastore
+A bare minimum app that allows a Netlify identity user to sign up, log in, and securely read and write data scoped to their user in a private Sanity datastore. 
 
 This repo is *not* something you should fork to use for your next production project.  It's just a thing I made to learn/demonstrate one way this can work.
+
+## Outline of how it works
+
+### Signing Up 
+
+1. Front End User signs up with Netlify identity widget and confirms their email
+2. Front end user gets a token
+3. Netlify function sends the new user info to Sanity
+4. Sanity creates a document for that user
+
+### Reading and Writing User-Scoped Data
+
+1. Front End user logs in and gets a token
+2. Front end user requests data to be read or written from Sanity - this request is passed up to a Netlify Serverless function, along with user's token
+3. The serverless function has Sanity API key on hand and makes the request to the Sanity datastore
+4. Sanity datastore returns the users data to the function, which returns it to the client.  
 
 
 ## Where's the Sanity part? 
