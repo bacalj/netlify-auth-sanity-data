@@ -4,23 +4,22 @@
   <title>Netlify Auth & Sanity Data</title>
   <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
-  <script src="https://unpkg.com/validator@latest/validator.min.js"></script>
   <link rel="stylesheet" href="style.css">
-  <script src="utility.js"></script>
-  <script src="crud.js"></script>
+  <script src="scripts/utility.js"></script>
+  <script src="scripts/crud.js"></script>
 </head>
 <body class="logged-out">
   <div class="app">
     
     <div class="grid">
       <div class="netlify box">
-        <img class="logo" src="/netlify.svg" alt="netlify icon">
+        <img class="logo" src="images/netlify.svg" alt="netlify icon">
         <h2>Authenticate with Netlify</h2>
         <div class="data-netlify" data-netlify-identity-menu></div>
       </div>
 
       <div class="sanity box">
-        <img class="logo" src="/sanityicon.png" alt="sanity icon">
+        <img class="logo" src="images/sanityicon.png" alt="sanity icon">
         <h2 class="sanity-title">Read & Write to Sanity</h2>
         
         <div class="sanity-no-go">
@@ -33,7 +32,7 @@
           <input type="text" id="new-note">
           <button onclick="createUserNote()">add note</button>
           <ul id="notes">
-
+            <!-- notes get rendered here -->
           </ul>
         </div>
       </div>
