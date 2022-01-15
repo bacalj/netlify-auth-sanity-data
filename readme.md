@@ -15,12 +15,16 @@ This repo is *not* something you should fork to use for your next production pro
 3. Netlify function sends the new user info to Sanity
 4. Sanity creates a document for that user
 
+![signup diagram](/images/signing_up.png)
+
 ### Reading and Writing User-Scoped Data
 
 1. Front End user logs in and gets a token
 2. Front end user requests data to be read or written from Sanity - this request is passed up to a Netlify Serverless function, along with user's token
 3. The serverless function has Sanity API key on hand and makes the request to the Sanity datastore
 4. Sanity datastore returns the users fetched data to the function, which returns it to the client.  
+
+![fetching data diagram](/images/fetching_data.png)
 
 ### Some Details
 
