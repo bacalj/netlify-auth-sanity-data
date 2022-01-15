@@ -1,3 +1,8 @@
+/**
+ * Renders notes in the DOM.
+ * @param {Array} arr  array of note objects promised by fetch in {@function netlify/functions/user-notes}
+ */
+
 function renderNotes(arr){
     
     document.getElementById("notes").innerHTML = ""
@@ -21,6 +26,11 @@ function renderNotes(arr){
     });
 }
 
+/**
+ * Takes text value from DOM input and sends it to {@function netlify/functions/create-note} with token
+ * If ok calls {@function renderNotes} otherwise alerts error
+ * Zeros out DOM input
+ */
 async function createUserNote(){
     
     showAnimation()
@@ -49,6 +59,10 @@ async function createUserNote(){
     document.getElementById('new-note').value = ''
 }
 
+/**
+ * Orders the getting and rendering of the users notes by calling
+ * {@function netlify/functions/user-notes} and passes result to {@function renderNotes}
+ */
 async function getAndRenderUserNotes(){
     
     if (netlifyIdentity.currentUser() !== null){
