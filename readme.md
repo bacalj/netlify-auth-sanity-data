@@ -11,18 +11,16 @@ This repo is *not* something you should fork to use for your next production pro
 ### Signing Up 
 
 1. Front End User signs up with [Netlify identity widget](https://github.com/netlify/netlify-identity-widget) and confirms their email
-2. Front end user gets a token
-3. Netlify function sends the new user info to Sanity
-4. Sanity creates a document for that user
+2. Front end user gets a token, and at the same time netlify sends the new user's id to Sanity.  Sanity creates a document mapped to the Netlify user by id. 
 
 ![signup diagram](/images/signing_up.png)
 
 ### Reading and Writing User-Scoped Data
 
-1. Front End user logs in and gets a token
-2. Front end user requests data to be read or written from Sanity - this request is passed up to a Netlify Serverless function, along with user's token
-3. The serverless function has Sanity API key on hand and makes the request to the Sanity datastore
-4. Sanity datastore returns the users fetched data to the function, which returns it to the client.  
+1. Front End requests the users stuff, presenting token to netlify function
+2. Netlify (with Sanity key in server-side ENV var) uses user info in token and queries Sanity for the user's data
+3. Sanity sends the user's stuff  back to a serverless function
+4. The serverless function returns it to the browser
 
 ![fetching data diagram](/images/fetching_data.png)
 
