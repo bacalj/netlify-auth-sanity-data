@@ -1,6 +1,7 @@
 /**
  * Renders notes in the DOM.
- * @param {Array} arr  array of note objects promised by fetch in {@function netlify/functions/user-notes}
+ * @param {Array} arr  array of note objects 
+ * promised by fetch in {@function netlify/functions/user-notes}
  */
 
 function renderNotes(arr){
@@ -27,7 +28,8 @@ function renderNotes(arr){
 }
 
 /**
- * Takes text value from DOM input and sends it to {@function netlify/functions/create-note} with token
+ * Takes text value from DOM input 
+ * and sends it to {@function netlify/functions/create-note} with token
  * If ok calls {@function renderNotes} otherwise alerts error
  * Zeros out DOM input
  */
@@ -60,8 +62,10 @@ async function createUserNote(){
 }
 
 /**
- * Orders the getting and rendering of the users notes by calling
- * {@function netlify/functions/user-notes} and passes result to {@function renderNotes}
+ * Orders the getting and rendering 
+ * of the users notes by calling
+ * {@function netlify/functions/user-notes} and 
+ * passes result to {@function renderNotes}
  */
 async function getAndRenderUserNotes(){
     
@@ -123,7 +127,6 @@ function showAnimation(){
 }
 
 function removeAnimation(){
-    console.log('remove animation')
     document.getElementById('animation').style.display = "none"
 }
 
@@ -132,7 +135,7 @@ window.netlifyIdentity.on('init', () => {
 })
 
 window.netlifyIdentity.on('login', (u) => {
-    console.log('logging in a user, giving them a token here')
+    console.log('logging in a user, giving them a token, here they are: ')
     console.log(u)
     applyBodyClass('logged-in')
     getAndRenderUserNotes()
