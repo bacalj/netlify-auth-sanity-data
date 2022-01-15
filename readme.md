@@ -1,18 +1,9 @@
 # Netlify Auth & Sanity Data
 
-A minimum, no-front-end-javascript-frameworks-were-used-in-the-filming-of-this-movie example of third-party-auth-powered, Sanity-backed app. 
+A bare minimum app that allows a Netlify identity user to log in, and securely read and write data scoped to their user in a private Sanity datastore
 
-## Wha?
+This repo is *not* something you should fork to use for your next production project.  It's just a thing I made to learn/demonstrate one way this can work.
 
-The task I set for myself was: "can I make a bare minimum app that allows a user to log in, and securely read and write data from a Sanity datastore"? There are lots of ways out there to do this, and I don't think this repo is something you should fork to use for your next project.  It's just a thing I made to learn and find all the weird corners of how something like this can work. 
-
-So, the main players:
-
-1. Sanity Content Lake 
-
-2. Netlify Functions
-
-3. Netlify Identity
 
 ## Where's the Sanity part? 
 
