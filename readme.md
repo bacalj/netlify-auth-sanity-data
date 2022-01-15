@@ -16,7 +16,7 @@ So, the main players:
 
 ## Where's the Sanity part? 
 
-It's in this repo, but here's the schemas for quick reference:
+It's [this repo](https://github.com/bacalj/authy-studio) but that is just a clean, out-of-the-box Sanity studio, so there is not much to see there.  The schemas for the studio are pasted below for quick reference. 
 
 ### note.js
 
