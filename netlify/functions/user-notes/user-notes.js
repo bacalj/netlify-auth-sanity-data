@@ -44,7 +44,11 @@ const handler = async (event, context) => {
 
     await client.fetch(query).then((r) => {
       notes = r.map((n) => {
-        return { title: n.title, updated: n._updatedAt, id: n._id }
+        return { 
+          title: n.title, 
+          updated: n._updatedAt, 
+          id: n._id 
+        }
       })
     })
 
