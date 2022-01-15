@@ -1,4 +1,4 @@
-# Authy
+# Netlify Auth & Sanity Data
 
 A minimum, no-front-end-javascript-frameworks-were-used-in-the-filming-of-this-movie example of third-party-auth-powered, Sanity-backed app. 
 
