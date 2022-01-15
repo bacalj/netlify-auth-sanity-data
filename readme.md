@@ -1,5 +1,7 @@
 # Netlify Auth & Sanity Data
 
+![screenshot](/images/working_screenshot.png)
+
 A bare minimum app that allows a Netlify identity user to sign up, log in, and securely read and write data scoped to their user in a private Sanity datastore. 
 
 This repo is *not* something you should fork to use for your next production project.  It's just a thing I made to learn/demonstrate one way this can work.
@@ -8,7 +10,7 @@ This repo is *not* something you should fork to use for your next production pro
 
 ### Signing Up 
 
-1. Front End User signs up with Netlify identity widget and confirms their email
+1. Front End User signs up with [Netlify identity widget](https://github.com/netlify/netlify-identity-widget) and confirms their email
 2. Front end user gets a token
 3. Netlify function sends the new user info to Sanity
 4. Sanity creates a document for that user
