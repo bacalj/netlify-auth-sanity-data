@@ -16,5 +16,59 @@ So, the main players:
 
 ## Where's the Sanity part? 
 
-It's absent today.  It's just a bare-bones Sanity project with a dataset set to private.  The schema is this:
+It's in this repo, but here's the schemas for quick reference:
+
+### note.js
+
+```js
+
+import { MdNote } from 'react-icons/md'
+
+export default {
+  name: 'note',
+  title: 'Notes',
+  type: 'document',
+  icon: MdNote,
+  fields: [
+    {
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    },
+    {
+      name: 'belongsTo',
+      title: 'User',
+      type: 'reference',
+      to: [ { type: 'webUser' } ]
+    }
+  ]
+}
+
+```
+
+### webUser.js
+
+```js
+import { MdPerson } from 'react-icons/md'
+
+export default {
+  name: 'webUser',
+  title: 'Website Users',
+  type: 'document',
+  icon: MdPerson,
+  fields: [
+    {
+      name: 'email',
+      title: 'Email',
+      type: 'string'
+    },
+    {
+      name: 'fullName',
+      title: 'Full Name',
+      type: 'string'
+    }
+  ]
+}
+
+```
 
