@@ -35,7 +35,7 @@ async function createUserNote(){
     
     showAnimation()
 
-    let noteText = document.getElementById('new-note').value 
+    let noteText = document.getElementById('new-note').value.replace(/[^\w\s!?]/g,'');
 
     if (netlifyIdentity.currentUser() !== null){
 
