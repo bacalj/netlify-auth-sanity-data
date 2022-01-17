@@ -124,3 +124,27 @@ p, div, span, a {
     top: 50%;
     transform: translateY(-50%);
 }
+
+footer {
+    position: fixed;
+    bottom: 0;
+    text-align:center;
+    width: 100%;
+    padding:10px;
+}
+
+footer div {
+    display: inline-block;
+    padding:10px;
+}
+
+footer img {
+    width:22px;
+}
+
+.nota {
+    margin-top:60px;
+    font-size: 11px;
+    color:#1a0909;
+    width:330px;
+}
