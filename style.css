@@ -148,3 +148,9 @@ footer img {
     color:#1a0909;
     width:330px;
 }
+
+.netlify-identity-signup:after {
+    content: "*";
+    width:20px;
+    height:20px;
+}
