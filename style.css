@@ -87,6 +87,7 @@ li > button {
 .data-netlify li {
     display: inline-block;
     margin-right:6px;
+    margin-top:6px;
 }
 
 p, div, span, a {
