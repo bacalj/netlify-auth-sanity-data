@@ -155,3 +155,8 @@ footer img {
     width:20px;
     height:20px;
 }
+
+.sanity-link img {
+    filter: grayscale(100%);
+    opacity: 0.8;
+}
