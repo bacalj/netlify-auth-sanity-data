@@ -114,16 +114,24 @@ p, div, span, a {
     width: 100vw;
     height: 100vh;
     z-index:100000;
-    background-color: rgba(100,100,100,.5);
+    background-color: rgba(100,100,100,.74);
     text-align:center;
 }
 
 #animation img {
-    width:50%;
+    width:10%;
     margin: 0 auto;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    opacity: .5;
+    animation: 2s foo infinite ease-in-out
+}
+
+@keyframes foo {
+    0% { opacity: .5;}
+    50% { opacity: .9}
+    100% { opacity: .5;}
 }
 
 footer {
