@@ -125,13 +125,22 @@ p, div, span, a {
     top: 50%;
     transform: translateY(-50%);
     opacity: .5;
-    animation: 2s foo infinite ease-in-out
+    animation: 2s rocking infinite ease-in-out
 }
 
-@keyframes foo {
-    0% { opacity: .5;}
-    50% { opacity: .9}
-    100% { opacity: .5;}
+@keyframes rocking {
+    0% { 
+        transform: rotate(0deg)
+    }
+    25% { 
+        transform: rotate(10deg)
+    }
+    75% { 
+        transform: rotate(-10deg)
+    }
+    100% {
+        transform: rotate(0deg)
+    }
 }
 
 footer {
