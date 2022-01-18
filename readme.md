@@ -67,25 +67,34 @@ export default {
 ### webUser.js
 
 ```js
-import { MdPerson } from 'react-icons/md'
+
+   
+import { MdNote } from 'react-icons/md'
 
 export default {
-  name: 'webUser',
-  title: 'Website Users',
+  name: 'note',
+  title: 'Notes',
   type: 'document',
-  icon: MdPerson,
+  icon: MdNote,
   fields: [
     {
-      name: 'email',
-      title: 'Email',
-      type: 'string'
+      name: 'title',
+      title: 'Title',
+      type: 'string',
     },
     {
-      name: 'fullName',
-      title: 'Full Name',
-      type: 'string'
+      name: 'belongsTo',
+      title: 'User',
+      type: 'reference',
+      to: [ { type: 'webUser' } ]
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'belongsTo.email'
+    }
+  }
 }
 
 ```
