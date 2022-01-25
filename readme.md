@@ -2,7 +2,7 @@
 
 A bare minimum app that allows a Netlify identity user to sign up, log in, and securely read and write data scoped to their user in a private Sanity datastore. 
 
-![screenshot](/images/better_screenshot.png)
+![screenshot](/images/better_screenshot_2.png)
 
 This repo is *not* something you should fork to use for your next production project.  It's just a thing I made to learn/demonstrate one way this can work.
 
